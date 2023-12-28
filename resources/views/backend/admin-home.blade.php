@@ -1,21 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    Admin Page
-    <form method="POST" action="{{ route('logout') }}">
-        @csrf
-
-        <x-dropdown-link :href="route('logout')"
-                onclick="event.preventDefault();
-                            this.closest('form').submit();">
-            {{ __('Log Out') }}
-        </x-dropdown-link>
-    </form>
-</body>
-</html>
+<div class="container">
+    <h2>Customers</h2>
+    <ul class="responsive-table">
+      <li class="table-header">
+        <div class="col col-1">First Name</div>
+        <div class="col col-2">Last Name</div>
+        <div class="col col-3">Email</div>
+        <div class="col col-4">Telephone</div>
+      </li>
+      @foreach ($users as $user )
+      <li class="table-row">
+        <div class="col col-1" data-label="Job Id">{{$user->firstname}}</div>
+        <div class="col col-2" data-label="Customer Name">{{$user->lastname}}</div>
+        <div class="col col-3" data-label="Amount">{{$user->email}}</div>
+        <div class="col col-4" data-label="Payment Status">{{$user->contact}}</div>
+      </li>
+      @endforeach
+      
+      
+    </ul>
+  </div>

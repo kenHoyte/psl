@@ -12,17 +12,23 @@ class HomeController extends Controller
         
         if(Auth::id())
         {
+            $users = User::where('role', '!=', 'admin')->get();
             $userrole=Auth()->user()->role;
 
             if($userrole=='customer'){
                 return view('dashboard');
             }
             else if($userrole=='admin'){
-                return view('backend.main');
+                return view('backend.main', compact('users'));
             }
             else{
                 return redirect()->back();
             }
         }
     }
+
+    public function post(){
+        return view('backend.main');
+    }
+
 }
